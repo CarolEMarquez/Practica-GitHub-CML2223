@@ -25,9 +25,11 @@ namespace Practica_GitHub_CML2223
             double costo =0;
            
             textoTelegrama = txtTelegrama.Text;      //Texto del telegrama
-            
-            if (cbUrgente.Checked)      // Si urgente cambia el tipo de telegrama
+
+            if (radioUrgente.Checked)
+            {
                 tipoTelegrama = 'u';
+            }
            
             int calcularPalabras(string texto)    // Calculo del Nro.Palabras del telegrama
             {
@@ -46,7 +48,7 @@ namespace Practica_GitHub_CML2223
             numPalabras = calcularPalabras(textoTelegrama);
 
 
-            if (tipoTelegrama == 'O' || tipoTelegrama == 'o')  // Caso Telegrama es ordinario
+            if (tipoTelegrama == 'o')  // Caso Telegrama es ordinario
             {
                 if (numPalabras <= 10)    // Si Nro.Palabras menor o igual a 10
                     costo = 2.5;         //Costo Telegrama es 2.5  (Error corregido antes era 25) 
