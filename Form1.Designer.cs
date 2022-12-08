@@ -55,10 +55,11 @@
             this.cbUrgente.TabIndex = 1;
             this.cbUrgente.Text = "Marque si es urgente";
             this.cbUrgente.UseVisualStyleBackColor = true;
+            this.cbUrgente.CheckedChanged += new System.EventHandler(this.cbUrgente_CheckedChanged);
             // 
             // txtTelegrama
             // 
-            this.txtTelegrama.Location = new System.Drawing.Point(51, 45);
+            this.txtTelegrama.Location = new System.Drawing.Point(47, 45);
             this.txtTelegrama.Name = "txtTelegrama";
             this.txtTelegrama.Size = new System.Drawing.Size(129, 20);
             this.txtTelegrama.TabIndex = 2;
@@ -73,9 +74,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(48, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.Size = new System.Drawing.Size(148, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Texto del telegrama";
             // 

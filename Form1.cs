@@ -47,5 +47,10 @@ namespace Practica_GitHub_CML2223
             txtPrecio.Text = coste.ToString() + " euros";
 
         }
+
+        private void cbUrgente_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
