@@ -20,31 +20,53 @@ namespace Practica_GitHub_CML2223
         private void button1_Click(object sender, EventArgs e)
         {
             string textoTelegrama;
-            char tipoTelegrama = ' ';
+            char tipoTelegrama = 'o';  //Inicialmente tipoTelegrama es ordinario CM2223
             int numPalabras = 0;
-            double coste;
-            //Leo el telegrama 
-            textoTelegrama = txtTelegrama.Text;
-            // telegrama urgente? 
-            if (cbUrgente.Checked)
+            double costo =0;
+           
+            textoTelegrama = txtTelegrama.Text;      //Texto del telegrama
+            
+            if (cbUrgente.Checked)      // Si urgente cambia el tipo de telegrama
                 tipoTelegrama = 'u';
-            //Obtengo el número de palabras que forma el telegrama numPalabras = textoTelegrama.Length; 
-            //Si el telegrama es ordinario 
-            if (tipoTelegrama == 'o')
-                if (numPalabras <= 10)
-                    coste = 25;
+           
+            int calcularPalabras(string texto)    // Calculo del Nro.Palabras del telegrama
+            {
+                int i = 0, numPalabra = 1;
+                while (i <= texto.Length - 1)
+                {
+                    if (texto[i] == ' ' || texto[i] == '\n' || texto[i] == '\t')
+                    {
+                        numPalabra++;
+                    }
+                    i++;
+                }
+                return numPalabra;
+            }
+
+            numPalabras = calcularPalabras(textoTelegrama);
+
+
+            if (tipoTelegrama == 'O' || tipoTelegrama == 'o')  // Caso Telegrama es ordinario
+            {
+                if (numPalabras <= 10)    // Si Nro.Palabras menor o igual a 10
+                    costo = 2.5;         //Costo Telegrama es 2.5  (Error corregido antes era 25) 
                 else
-                    coste = 0.5 * numPalabras;
+                    costo = 2.5 + 0.5 * (numPalabras - 10); // Si Nro.Palabras mayor a 10
+                if (numPalabras == 0)
+                    costo = 0;
+            }
             else
-            //Si el telegrama es urgente 
-            if (tipoTelegrama == 'u')
-                if (numPalabras <= 10)
-                    coste = 5;
-                else
-                    coste = 5 + 0.75 * (numPalabras - 10);
-            else
-                coste = 0;
-            txtPrecio.Text = coste.ToString() + " euros";
+            {
+                if (tipoTelegrama == 'u')   // Caso Telegrama es Urgente
+                    if (numPalabras <= 10)  // Si Nro.Palabras mayor que 10
+                        costo = 5;              //Costo Telegrama es 5
+                    else 
+                        costo = 5 + 0.75 * (numPalabras - 10); 
+                    if (numPalabras == 0)
+                        costo = 0;
+            }
+            txtPrecio.Text = costo.ToString() + " euros";
+
 
         }
 
