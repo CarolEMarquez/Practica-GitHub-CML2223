@@ -20,31 +20,45 @@ namespace Practica_GitHub_CML2223
         private void button1_Click(object sender, EventArgs e)
         {
             string textoTelegrama;
-            char tipoTelegrama = ' ';
+            char tipoTelegrama = 'o'; //se coloca como tipoTelegrama el ordinario CM2223
             int numPalabras = 0;
             double coste;
-            //Leo el telegrama 
+            //Leo el telegrama
             textoTelegrama = txtTelegrama.Text;
-            // telegrama urgente? 
+            // telegrama urgente?
             if (cbUrgente.Checked)
                 tipoTelegrama = 'u';
-            //Obtengo el número de palabras que forma el telegrama numPalabras = textoTelegrama.Length; 
-            //Si el telegrama es ordinario 
-            if (tipoTelegrama == 'o')
+            //Obtengo el número de palabras que forma el telegrama
+            int calcularPalabras(string texto)
+            {
+                int i = 0, numPalabra = 1;
+                while (i <= texto.Length - 1)
+                {
+                    if (texto[i] == ' ' || texto[i] == '\n' || texto[i] == '\t')
+                    {
+                        numPalabra++;
+                    }
+                    i++;
+                }
+                return numPalabra;
+            }
+            numPalabras = calcularPalabras(textoTelegrama);
+            //Si el telegrama es ordinario
+            if (tipoTelegrama == 'O' || tipoTelegrama == 'o')
                 if (numPalabras <= 10)
-                    coste = 25;
+                    coste = 2.5; //corregido costo de 25 se colocó 2.5 CM2223
                 else
                     coste = 0.5 * numPalabras;
             else
-            //Si el telegrama es urgente 
+            //Si el telegrama es urgente
             if (tipoTelegrama == 'u')
                 if (numPalabras <= 10)
                     coste = 5;
                 else
-                    coste = 5 + 0.75 * (numPalabras - 10);
+                    coste = 5 + 0.75 * (numPalabras - 10); //Punto Interrupcion Condicional CM2223
             else
                 coste = 0;
-            txtPrecio.Text = coste.ToString() + " euros";
+            txtPrecio.Text = coste.ToString() + "euros";
 
         }
 
